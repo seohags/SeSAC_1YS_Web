@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>명록이l</title>
+
+<script>
+   var boardArray = new Array();
+
+   function Board(uName, uContent) {
+      this.userName = uName;
+      this.content = uContent;
+      this.write = new Date();
+   }
+   
+   Board.prototype.userLocalString = function() {
+      return this.write.getFullYear() + "-"
+          + (this.write.getMonth() + 1) + "-"
+          + this.write.getDate() + "-"
+          + this.write.getHours() + ":"
+          + this.write.getSeconds();
+    }
+
+   function main() {
+      var uName = document.getElementById("uName").value;
+      var uContent = document.getElementById("uContent").value;
+      var length = boardArray.length;
+      boardArray[length] = new Board(uName, uContent);
+      
+      print(length);
+      
+      clear();
+   }
+   
+   function print(idx) {
+      var tableNode = document.getElementById("bbsTable");
+      var trNode = document.createElement("tr");
+      
+      trNode.appendChild(createTableNode((idx+1).toString()));
+      trNode.appendChild(createTableNode(boardArray[idx].userName));
+      trNode.appendChild(createTableNode(boardArray[idx].content));
+      trNode.appendChild(createTableNode(boardArray[idx].userLocalString()));
+      
+      tableNode.appendChild(trNode);
+   }
+   
+   function createTableNode(val) {
+      var textNode = document.createTextNode(val);
+      var tdNode = document.createElement("td");
+      tdNode.appendChild(textNode);
+      return tdNode;
+   }
+   
+   function clear() {
+	   	document.getElementById("uName").value="";
+	   	document.getElementById("uContent").value="";
+	   	document.getElementById("uName");
+   }
+</script>
+</head>
+<body>
+
+
+
+<div>
+   <p></p>
+   <div>
+      <form>
+         <table class="tb">
+            <tr>
+               <th>작성자</th>
+               <td>
+                  <input type="text" id="uName" >
+               </td>
+            </tr>
+            <tr>
+               <th>내용</th>
+               <td>
+                  <input type="text" id="uContent" >
+               </td>
+            </tr>
+         </table>
+         
+         <br>
+
+         <input type="button" value="작성" class="btn" onclick="main()">
+         
+         
+         <br><br>
+         <table class="tb" id="bbsTable" border="1">
+             <tr>
+                 <th>번호</th>
+                 <th>작성자</th>
+                 <th>내용</th>
+                 <th>작성일</th>
+                </tr>
+            </table>
+            
+        </form>
+   </div>
+</div>
+
+
+</body>
+</html>
