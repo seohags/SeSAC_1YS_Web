@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script
+  src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+  <script>
+
+   
+
+    function changeImg() {
+        $("#imgID").attr("src", "dog.jpg");
+    }
+    function changeImg2() {
+        $("#imgID").attr("src", "cat.jpg");
+    }
+    function changeImg3() {
+        $("#imgID").attr("src", "lion.jpg");
+    }
+    function changeImg4() {
+        $("#imgID").attr("src", "tiger.jpg");
+    }
+
+    $(document).ready(function(){
+        changeImg();
+    });
+
+
+
+  </script>
+
+  <style>
+    #img { width: 300px; height: 300px;}
+  </style>
+  
+</head>
+
+<body>
+    <div><img src="dog.jpg" id="imgID" class="imgClass"></div>
+   
+    <button class="button1" onclick="changeImg()">개</button>
+    <button class="button2" onclick="changeImg2()" >고양이</button>
+    <button class="button3" onclick="changeImg3()" >사자</button>
+    <button class="button4" onclick="changeImg4()" >호랑이</button>
+
+    
+</body>
+</html>

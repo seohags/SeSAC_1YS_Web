@@ -1,45 +1,83 @@
 <html>
     <head>
-        <meta charset="utf-8">
-        <title>ㅋ</title>
         <script>
-            function cal(){
-                var v1 = Number(document.getElementById("v1").value); 
-                var v2 = Number(document.getElementById("v2").value); 
-                var op = document.getElementById("op").value;
-                var res;
-
-                if(op == "+"){
-                    res = v1+v2;
-                }else if(op == "-"){
-                    res = v1-v2;
-                }else if(op == "*"){
-                    res = v1*v2;
-                }else if(op == "/"){
-                    res = v1/v2;
-                }
-                document.getElementById("res").value = res;
-            }
-
-            function reset(){
-                document.getElementById("v1").value = "";
-                document.getElementById("v2").value = "";
-                document.getElementById("op").value = "";
-                document.getElementById("res").value = "";
+            var cnt = 1;
+            function writeNote(){
+                var name = document.getElementById("name").value;
+                var content = document.getElementById("content").value;
+​
+                var table = document.getElementById("table");
+                var garo = document.createElement("tr");
+​
+                var kan1 = document.createElement("td");
+                kan1.innerText = cnt;
+                cnt = cnt + 1;
+                var kan2 = document.createElement("td");
+                kan2.innerText = name;
+                var kan3 = document.createElement("td");
+                kan3.innerText = content;
+​
+                var kan4 = document.createElement("td");
+                
+                var date = new Date();
+                console.log( date );
+​
+                kan4.innerText = date.getFullYear() + "-" + (date.getMonth()+1) + "-" + date.getDate();
+​
+                garo.appendChild(kan1);
+                garo.appendChild(kan2);
+                garo.appendChild(kan3);
+                garo.appendChild(kan4);
+                table.appendChild(garo);
             }
         </script>
     </head>
     <body>
-        값1: 
-        <input type="text" id="v1" placeholder="값1"><br>
-        값2: 
-        <input type="text" id="v2" placeholder="값2"><br>
-        연산자: 
-        <input type="text" id="op" placeholder="연산자"><br>
-        결과: 
-        <input type="text" id="res" placeholder="결과">
-        <br><br>
-        <input type="button" value="계산하기" onclick="cal()">
-        <input type="button" value="초기화" onclick="reset()">
+        <div>
+            <p>방명록입니다.</p>
+            
+            <div>
+                 <table class="tbl">
+                 <tr>
+                     <th>작성자</th>
+                     <td>
+                         <input type="text" id="name" style="width: 150px;">
+                     </td>
+                 </tr>
+                 <tr>
+                     <th>내용</th>
+                     <td>
+                         <input type="text" id="content" style="width: 560px;">
+                     </td>
+                 </tr>
+                 </table>
+                 
+                 <br>
+                 <button type="button" onclick="writeNote();">작성</button>
+                 
+                 <br><br>
+         
+                 <table id="table" border="1" cellpadding="10" cellspacing="1">
+                     <tr>
+                         <th>번호</th>
+                         <th>작성자</th>
+                         <th>내용</th>
+                         <th>작성일</th>
+                     </tr>
+                     <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                    <tr>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                        <th></th>
+                    </tr>
+                 </table>
+            </div>
+         </div>
     </body>
 </html>
