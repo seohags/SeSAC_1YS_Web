@@ -1,11 +1,10 @@
 <style>
+  img {
+    width: 200px;
+    height: 200px;
+  }
 
-    img{
-        width: 200px;
-        height: 200px;
-    }
-
-    /* #img_skewx:hover{ transform: skewX(50deg);}
+  /* #img_skewx:hover{ transform: skewX(50deg);}
     #img_skewy:hover{ transform: skewX(50deg);}
     #img_skew:hover{ transform: skew(50deg, 50deg);}
 
@@ -18,31 +17,40 @@
     #img_scale:hover{ transform: scale(2);}
     #img_scale23:hover{ transform: scale(2,3);} */
 
-    #box {
-        display: flex;
-        justify-content: center;
-    }
+  #box {
+    display: flex;
+    justify-content: center;
+  }
 
-    #image1{transform: skewY(30deg); position: relative; z-index: 1;}
+  #image1 {
+    transform: skewY(30deg);
+    position: relative;
+    z-index: 1;
+  }
 
-    #image2{transform: skewY(30deg); position: relative; left: -70; z-index: -1;}
- 
-    #image3{transform: skewY(30deg); position: relative; left: -150; z-index: -2;}
-    
+  #image2 {
+    transform: skewY(30deg);
+    position: relative;
+    left: -70;
+    z-index: -1;
+  }
+
+  #image3 {
+    transform: skewY(30deg);
+    position: relative;
+    left: -150;
+    z-index: -2;
+  }
 </style>
 
 <body>
+  <div id="box">
+    <div id="image1"><img src="cafe.jpg" /></div>
+    <div id="image2"><img src="dog.jpg" /></div>
+    <div id="image3"><img src="grass1.png" /></div>
+  </div>
 
-<div id="box">
-<div id="image1" ><img src="cafe.jpg"></div>
-<div id="image2"><img src="dog.jpg"></div>
-<div id="image3"><img src="grass1.png"></div>
-</div>
-
-<div>
+  <div>
     <p>some text</p>
-</div>
-
+  </div>
 </body>
-
-
