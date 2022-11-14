@@ -83,7 +83,9 @@ const renderNewAnimalElement = (id, name, imageUrl, rating) => {
               <div class="text-center">
                 <h5 class="fw-bolder">${name}</h5>
                 <div class="bi-star-fill">${rating}</div>
-                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent"><button>돌려 보내기</button></div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent"></div>
+                  <button class="btn btn-outline-dark mt-auto">돌려 보내기</button>
+                
               </div>
             </div>
           </div>
