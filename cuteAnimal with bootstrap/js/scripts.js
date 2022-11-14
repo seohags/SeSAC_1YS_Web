@@ -71,7 +71,7 @@ const addAnimalHandler = () => {
 
 
 const renderNewAnimalElement = (id, name, imageUrl, rating) => {
-  const newAnimalElement = document.createElement('li');
+  const newAnimalElement = document.createElement('div');
   newAnimalElement.className = 'col mb-5';
   newAnimalElement.innerHTML = `
     <div class="container px-4 px-lg-5 mt-5">
@@ -83,7 +83,7 @@ const renderNewAnimalElement = (id, name, imageUrl, rating) => {
               <div class="text-center">
                 <h5 class="fw-bolder">${name}</h5>
                 <div class="bi-star-fill">${rating}</div>
-                <div class="card-footer">${name}</div>
+                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent"><button>돌려 보내기</button></div>
               </div>
             </div>
           </div>
