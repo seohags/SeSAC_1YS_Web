@@ -334,7 +334,10 @@ label {
 }
 
 button {
-  border-radius: 0;
+  border-radius: 5px;
+  background-color: whitesmoke;
+  outline: darkgray;
+  padding: 5px;
 }
 
 button:focus:not(:focus-visible) {
@@ -5493,6 +5496,7 @@ textarea.form-control-lg {
   margin: 0.5rem;
   pointer-events: none;
 }
+
 .modal.fade .modal-dialog {
   transition: transform 0.3s ease-out;
   transform: translate(0, -50px);
@@ -5546,13 +5550,21 @@ textarea.form-control-lg {
   z-index: 1050;
   width: 100vw;
   height: 100vh;
-  background-color: #000;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
 }
+
+.modal-backdrop.visible {
+  display: block;
+  pointer-events: all;
+}
+
 .modal-backdrop.fade {
-  opacity: 0;
-}
-.modal-backdrop.show {
   opacity: 0.5;
+}
+
+.modal-backdrop.show {
+  opacity: 0.9;
 }
 
 .modal-header {
