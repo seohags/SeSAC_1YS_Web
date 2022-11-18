@@ -40,22 +40,55 @@
 // let msg = getDetail(videos[0]);
 // console.log(msg);
 
+function call(name,cb) {
+    setTimeout(function(){
+        console.log("사용자는 " + name);
+        cb(name);
+    }, 2000);
+};
 
-function call(name) {
-    setTimeout(function() {
-        
-    console.log("사용자는 " + name);
-    return "call";
-}
+function back(call, cb) {
+    setTimeout(function(){
+        console.log("시작은 " + call);
+        cb(call);
+    }, 1500);
+};
 
-function back() {
+function hell(back, cb) {
     setTimeout(function() {
-        cb();
+        console.log("두번째는 " + back);
+        cb(back);
     }, 1000);
+};
+
+function callback(hell, cb) {
+    setTimeout(function() {
+        console.log("세번째는 " + hell);
+        cb();
+    }, 500);
 }
 
-function hell() {
-    setTimeout(function() {
-        cb();
-    }, 500); 
-}
+
+
+call('kim', function() {
+    back("call", function() {
+        hell("back", function(){
+            callback("hell", function(){
+                console.log();
+            })
+        })
+    })
+})
+
+
+
+
+
+
+
+
+
+
+
+
+
