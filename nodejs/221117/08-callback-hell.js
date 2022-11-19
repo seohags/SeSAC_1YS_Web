@@ -40,6 +40,7 @@
 // let msg = getDetail(videos[0]);
 // console.log(msg);
 
+
 function call(name,cb) {
     setTimeout(function(){
         console.log("사용자는 " + name);
@@ -67,8 +68,6 @@ function callback(hell, cb) {
         cb();
     }, 500);
 }
-
-
 
 call('kim', function() {
     back("call", function() {
