@@ -29,8 +29,6 @@ func1().then(function(result) {
     console.log("result : ", result);
 });
 
-
-
 function fun2(){
     return new Promise(function(resolve, reject) {
         setTimeout(function(){

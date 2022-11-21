@@ -1,33 +1,42 @@
-const fs = require('fs').promises;
+const fs = require('fs').promises
 
-fs.readFile('./sesac.txt')
-    .then((data) => {
-        console.log('데이타야 임마' , data);
-    })
-
-fs.writeFile('./sesac.txt', 'ㅈㄴ게 반갑다')
-    .then(() => {
-        return fs.readFile('./sesac.txt');
-    })
-    .then((data) => {
-        console.log(data.toString());
-    });
-
-fs.copyFile('./sesac.txt', './sesac2.txt'[0], function(err) {
-    if(err) throw err;
-    console.log('됐다 임마');
-    fs.readFile('./sesac2.txt', function(err, data){
-        if(err) throw err;
-        console.log("두 번째 파일도 됐따 임마 ", data.toString());
-    })
-})   
-
-
-
-
-// fs.rename('./sesac2.txt', './newfile.txt', {
+// fs.writeFile('./sesac.txt' , 'hello', function(err) {
+//   if (err) throw err;
+//   console.log('makeFile Success!');
+//   fs.readFile('./sesac.txt', function(err, data){
 //     if(err) throw err;
-//     console.log('복사됐따 임마');
-//     fs.readFile('')
-// })
+//     console.log("sesacFile data : ", data.toString());
+//   })
+// }) 
 
+// callback 함수로만 작성
+
+fs.writeFile('./sesac.txt', 'hello')
+  .then(function(){
+    return fs.readFile('./sesac.txt');
+  })
+  .then(function(data){
+    console.log(data.toString());
+  })
+
+// promise 로 바꾼거
+
+fs.copyFile('./sesac.txt', './sesac2.txt')
+  .then(() => {
+    console.log("copy complete")
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+
+// promise 로 파일복사
+
+fs.rename('./sesac2.txt', './sesac3.txt') 
+  .then(() => {
+    console.log("rename complete");
+  })
+  .catch((err) => {
+    console.error(err);
+  })
+
+// promise 로 파일 이름 변경
