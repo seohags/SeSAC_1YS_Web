@@ -8,4 +8,5 @@ var car2 = new Car("blue");
 console.log(car2.returnColor());
 
 var car3 = new Car("yellow");
-console.log(car3.returnColor());
+console.log(car3.returnColor()); 
+

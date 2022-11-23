@@ -7,11 +7,11 @@
     <title><%=title%></title>
 </head>
 <body>
-    <p>show image</p>
-    
-    <% for( let i =0; i<data.length; i++) { %>
-        <div><img src="/static/img/cat.jpg"><%=data[i]%></div>
-    <% } %>
 
+    <p>show img</p>
+
+    <% for(let i=1; i <= data.length; i++) { %>
+        <img src="/static/img/<%=i%>.jpg">
+    <% } %> 
 </body>
 </html>
