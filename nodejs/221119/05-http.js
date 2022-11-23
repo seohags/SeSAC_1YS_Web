@@ -7,7 +7,6 @@ const server = http.createServer(function(req,res){
    });
 });
 
-
 server.listen(8080,function(){
     console.log('8080번 포트로 실행');
 }); // 서버를 첫번째 매개변수의 포트로 실행한다

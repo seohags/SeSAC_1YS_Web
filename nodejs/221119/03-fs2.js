@@ -9,7 +9,7 @@ const fs = require('fs').promises
 //   })
 // }) 
 
-// callback 함수로만 작성
+// callback 함수로 작성
 
 fs.writeFile('./sesac.txt', 'hello')
   .then(function(){
