@@ -5,6 +5,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    
 </head>
 <body>
     <h3>Get 요청</h3>
@@ -70,9 +71,9 @@
 
     <h3>post 요청</h3>
     <form action="/postForm" method="post">
-        Id <input type="text" name="id" required placeholder="id">
-        password <input type="password" name="pw" required placeholder="password">
-
+        id <input type="text" name="id" required placeholder="id" pattern="^([a-zA-Z0-9가-힣]){4,}$">
+        password <input type="password" name="pw" required placeholder="password" pattern="^([a-z0-9]){6,9}$" >
+        phonenumber <input type="phonenumber" name="phonenumber" required placeholder="010-0000-0000">
         
         <fieldset>
             <legend>성별</legend>

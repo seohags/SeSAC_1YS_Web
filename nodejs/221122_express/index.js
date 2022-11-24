@@ -40,9 +40,9 @@ app.get('/ejs', (req, res) => {
 app.get('/img', (req, res) => {
   res.render('img', {
     title: 'image page',
-    data:['a', 'b', 'c'],
+    data: ['a', 'b', 'c'],
   });
-}); 
+});
 
 app.get('/form', (req, res) => {
   res.render('form');
@@ -50,7 +50,7 @@ app.get('/form', (req, res) => {
 
 app.get('/getForm', (req, res) => {
   console.log(req.query);
-  res.render('getresult', {data : req.query});
+  res.render('getresult', { data: req.query });
 });
 
 app.post('/postForm', (req, res) => {

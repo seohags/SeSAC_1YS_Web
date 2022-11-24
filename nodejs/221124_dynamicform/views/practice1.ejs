@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+    </script>
+    <script>
+        function sendGet() {
+            var form = document.getElementById("form_info");
+            axios({
+                method: "get",
+                url: "/practice1form",
+                params: {name:form.name.value , gender:form.gender.value , birth:form.date.value}
+            }).then(function(res){
+                alert(res.data.msg);
+            })
+        }
+    </script>
+</head>
+
+<body>
+    <form id="form_info">
+        이름 <input type="text" name="name" required placeholder="ID">
+        <fieldset>
+            <legend>성별</legend>
+                <input type="radio" name="gender" value="남성" id="남성"><label for="남성" required>남성</label>
+                <input type="radio" name="gender" value="여성" id="여성" required><label for="여성">여성</label>
+        </fieldset>
+        <fieldset>
+            <legend>생년월일</legend>
+            <input type="date" name="date">
+        </fieldset>
+        <fieldset>
+            <legend>관심사</legend>
+            <input type="checkbox" name="interest" value="travel"/>여행
+            <input type="checkbox" name="interest" value="fashion"/>패션
+            <input type="checkbox" name="interest" value="exercise"/>운동
+        </fieldset>
+        <button type="button" onclick="sendGet();">회원가입</button>
+</body>
+</html>

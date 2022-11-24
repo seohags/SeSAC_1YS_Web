@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js">
+    </script>
+    <script src="http://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script>
+
+        function sendGet() {
+            $.ajax({
+                 url: '/ajax',
+                 type: 'GET',
+		         data: {name:'name'},
+                 success: function() {
+                 console.log(data);
+            },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+         }
+
+         function sendPost() {
+            $.ajax({
+                 url: '/ajax',
+                 type: 'POST',
+		         data: {name:'name'},
+                 success: function(data) {
+                 console.log(data);
+            },
+                error: function(error) {
+                    console.error(error);
+                }
+            });
+         }
+    </script>
+</head>
+<body>
+    <form id="form_info">
+        <fieldset>
+            <legend>ajax</legend>
+            이름 <input type="text" name="name" required placeholder="ID"><br>
+            성별 <input type="radio" name="gender" value="남성" id="남성"><label for="남성" required>남성</label>
+                 <input type="radio" name="gender" value="여성" id="여성" required><label for="여성">여성</label><br>
+           생년월일<input type="date" name="date">
+        </fieldset>
+        <button type="button" onclick="sendGet();">get가입</button>
+        <button type="button" onclick="sendPost();">post가입</button>
+
+
+</body>
+</html>
