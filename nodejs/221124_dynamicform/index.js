@@ -30,8 +30,6 @@ app.get("/practice1form", function (req, res) {
     res.send({ msg: "회원가입 되었습니다 " + req.query.name + " 님 " + req.query.gender + " 이시고 " + req.query.birth + " 생 이시네요" })
 });
 
-
-
 // practice2 //
 app.get('/practice2', function (req, res) {
     res.render('practice2');
@@ -51,18 +49,24 @@ app.post("/practice2form", function (req, res) {
     console.log(req.body);
 });
 
-
 // ajax // 
 app.get('/ajax', function (req, res) {
     res.render('ajax');
 });
-app.get('/ajax', function (req, res) {
-    console.log(data);
+
+app.get("/ajax", function (req, res) {
+    console.log(req.query);
 });
 
+app.post("/ajax", function (req, res) {
+    console.log(req.body);
+});
 
 // fetch //
 
+app.get("/login", function (req,res) {
+    res.render('login');
+})
 
 
 app.listen(port, () => {
