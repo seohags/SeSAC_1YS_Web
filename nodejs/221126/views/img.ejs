@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>img</title>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script>
+         function sendPost() {
+            var form = document.getElementById("form_info");
+            var formData = new FormData(form);
+            axios({
+                method: "post",
+                url: "/upload-img2",
+                data: formData,
+                headers: {
+                        'Content-Type': 'multipart/form-data'
+                    }
+                })
+                .then((a) => { return a.data; })
+                .then((d) => {
+                    document.querySelector("img").src = d.path;
+                });
+        }
+    </script>
+</head>
+ 
+<body>
+    <fieldset>
+        <form id="form_info" action="/upload-img" method="post" enctype="multipart/form-data">
+            id : <input type="text" name="id"><br>
+            pw : <input type="password" name="pw"><br>
+            name : <input type="text" name="name1"><br>
+            age : <input type="text" name="age"><br>
+    </fieldset>
+    <input type="file" name="userimg">
+    <button>리셋</button>
+    <button type="button" onclick="sendPost();">회원가입</button>
+    </form>
+<img>
+</body>
+</html>
