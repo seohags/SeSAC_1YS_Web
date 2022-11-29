@@ -7,37 +7,39 @@
     <title>img</title>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script>
-         function sendPost() {
+         function register() {
             var form = document.getElementById("form_info");
             var formData = new FormData(form);
             axios({
                 method: "post",
-                url: "/upload-img2",
+                url: "/imgresult",
                 data: formData,
                 headers: {
-                        'Content-Type': 'multipart/form-data'
+                    'Content-Type' : 'multipart/form-data'
                     }
                 })
                 .then((a) => { return a.data; })
                 .then((d) => {
-                    document.querySelector("img").src = d.path;
+                    document.querySelector("img").src = d.path
                 });
-        }
+            } 
     </script>
 </head>
  
 <body>
-    <fieldset>
-        <form id="form_info" action="/upload-img" method="post" enctype="multipart/form-data">
+    <form id="form_info" action="upload-img" method="post" enctype="multipart/form-data">
+        <fieldset>
             id : <input type="text" name="id"><br>
             pw : <input type="password" name="pw"><br>
             name : <input type="text" name="name1"><br>
             age : <input type="text" name="age"><br>
-    </fieldset>
+        </fieldset>
     <input type="file" name="userimg">
     <button>리셋</button>
-    <button type="button" onclick="sendPost();">회원가입</button>
-    </form>
+</form>
 <img>
+<button type="button" onclick="register();">회원가입</button>
 </body>
 </html>
+
+somethi

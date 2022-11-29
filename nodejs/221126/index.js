@@ -5,6 +5,7 @@ const app = express();
 const port = 8000;
 
 app.set('view engine', 'ejs');
+app.use("/uploads", express.static("uploads"));
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
@@ -14,7 +15,6 @@ const upload = multer({
             done(null, 'uploads/');
         },
         filename(req, file, done) {
-            console.log("filename : ", req.body);
             const ext = path.extname(file.originalname);
             const filename = req.body.id + ext;
             done(null, filename);
@@ -22,10 +22,13 @@ const upload = multer({
     })
 });
 
-app.use("/uploads", express.static("uploads"));
 
 app.get("/file", (req, res) => {
     res.render("file");
+});
+
+app.post("/file", (req,res) => {
+    res.render('file');
 });
 
 app.get("/img", (req, res) => {
@@ -36,13 +39,28 @@ app.post("/upload-img", upload.single("userimg"), (req, res) => {
     res.render('imgresult', { path: req.file.path });
 });
 
+// post 실습
+
 app.get("/upload-img2", (req, res) => {
-    res.render("imgresult");
+    res.render("img");
 });
 
 app.post("/upload-img2", upload.single("userimg"), (res, req) => {
-    res.send({ path: req.file.path });
+    res.send( { path: req.file.path });
 });
+
+// 답
+app.get("/register2", (req,res) => {
+    res.render("practice36");
+});
+
+app.post("/register2", upload.single("userfile"), (req,res) => {
+    res.send( { path: req.file.path } );
+}); 
+
+// 
+
+
 
 app.post("/upload-single", upload.single("userfile"), (req, res) => {
     console.log(req.file);
@@ -61,6 +79,10 @@ app.post("/upload-fields", upload.fields([{ name: 'userfile1' }, { name: 'userfi
     console.log(req.body);
     res.send("Upload Complete");
 });
+
+app.post("/upload-fileds", upload.fields([{ name : 'userfile1'}, ]))
+
+
 
 app.get("/", test, test2, (req, res) => {
     console.log('hello', req.name);
@@ -82,5 +104,3 @@ function test2(req, res, next) {
 app.listen(port, () => {
     console.log('Server port : ', port);
 });
-
-
