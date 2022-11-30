@@ -22,7 +22,6 @@ const upload = multer({
     })
 });
 
-
 app.get("/file", (req, res) => {
     res.render("file");
 });

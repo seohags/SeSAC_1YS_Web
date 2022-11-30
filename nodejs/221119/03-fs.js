@@ -12,13 +12,13 @@ fs.writeFile('./write2.txt' , 'condingon', function(err) {
         if(err) throw err;
         console.log("write2File data : ", data.toString());
     })
-}) 
+});
 
 const fs2 = require("fs").promises; 
 fs2.readFile("./test.txt")
     .then((data) => {
         console.log("promise - data" , data);
-    })
+    });
 
 fs2.writeFile("./write.txt", 'sesac') // 파일 만드는 함수
     .then(function(){
