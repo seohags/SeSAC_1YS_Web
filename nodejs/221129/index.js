@@ -14,7 +14,7 @@ const cnn = mysql.createConnection({
 app.set("view engine", 'ejs');
 
 app.get("/", (req, res) => {
-    cnn.query("select * from product", (err, result) => {
+    cnn.query("select * from user", (err, result) => {
         if (err) throw (err);
 
         console.log(result);
