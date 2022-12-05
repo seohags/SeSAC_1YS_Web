@@ -8,6 +8,8 @@ app.use("/static", express.static(__dirname + "/static"));
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
+
+
 const router = require("./routes"); // 폴더까지 쓰면 그 아래에 있는 index 파일을 알아서 찾음 index 파일명이 아니라면 그 파일명까지 써줘야함 
 app.use('/visitor', router);
 

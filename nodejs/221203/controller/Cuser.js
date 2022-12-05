@@ -1,35 +1,32 @@
 const User = require("../model/User");
 
-exports.login = (req, res) => {
-    res.render("login");
-}
+exports.user = (req, res) => {
+    User.get_user(function (result) {
+        console.log(result);
+        res.render("user", { data: result });
+    });
+};
 
-exports.loginPost = (req, res) => {
-    let info = User.user();
-    if (req.body.id == info.id && req.body.pw == info.pw) res.send("로그인 성공");
-    else res.send("로그인 실패");
-}
+exports.register = (req, res) => {
+    User.register_user(req.body, function (id) {
+        console.log(id);
+        res.send(String(id)); //query 결과값
+    })
+    // insert req.body
+};
 
-var users =
-    `spreatics//1234//스프레틱스
-codee//4321//코디`;
+exports.delete = (req, res) => {
+    // mysql req.body.id 에 해당하는 데이터를 delete
+    // 서버 응답 (res.send)
+    User.delete_user(req.body.id, function () {
+        res.send(true); // 서버는 응답을 어떻게든 받아야함.
+    })
+};
 
-exports.loginPost2 = (req, res) => {
-    let users = User.user2();
-    let user_list = users.split("\n");
-    // user_list = ["spreatics//1234//스프레틱스", "codee//4321//코디"];
-    let login_flag = false;
-    let name = "";
-    for (let i = 0; i < user_list.length; i++) {
-        let user = user_list[i].split("//");
-        // user = ["spreatics","1234","스프레틱스"]
-        if (req.body.id == user[0] && req.body.pw == user[1]) {
-            login_flag = true;
-            name = user[2];
-            break;
-        }
-    }
-
-    if (login_flag) res.send(`${name} 님 환영합니다.`);
-    else res.send(`로그인 실패`);
-}
+exports.get_user_by_id = (req, res) => {
+    // req.query.id 에 해당하는 데이터를 조회
+    // 서버 응답 > 조회한 데이터
+    User.get_user_by_id_model(req.query.id, function (rows) {
+        res.send(rows);
+    });
+};
