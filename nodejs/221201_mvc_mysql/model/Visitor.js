@@ -4,7 +4,7 @@ const cnn = mysql.createConnection({
     host: 'localhost',
     user: 'user',
     password: 'sesac123',
-    database: 'sesac_test'
+    database: 'user'
 });
 
 exports.get_visitor = (cb) => {
@@ -16,11 +16,12 @@ exports.get_visitor = (cb) => {
     })
 };
 
+
 exports.register_visitor = (info, cb) => {
     // info = req.body; {name: "" , comment: "" }
     var sql = `insert into visitor(name, comment) values('${info.name}', '${info.comment}');`;
 
-    cnn.query(sql, (err, result) => { // result 에는 sql문을 실행시킨 결과가 담긴다. 
+    cnn.query(sql, (err, result) => {
         if (err) throw err;
         console.log("insert result : ", result);
         cb(result.insertId);

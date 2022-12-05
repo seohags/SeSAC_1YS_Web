@@ -31,12 +31,5 @@ exports.get_visitor_by_id = (req, res) => {
     });
 };
 
-exports.update_visitor = (req, res) => {
-    // req.body 데이터를 mysql에 update 할 수 있도록
-    // 서버 응답 > 
-    Visitor.update_visitor(req.body, function () {
-        res.send(true);
-    })
-};
 
-// router 에서 해야 할 작업들을 controller 에서 함.
+

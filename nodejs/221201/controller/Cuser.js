@@ -8,7 +8,7 @@ exports.loginPost = (req, res) => {
     let info = User.user();
     if (req.body.id == info.id && req.body.pw == info.pw) res.send("로그인 성공");
     else res.send("로그인 실패");
-}
+} 
 
 var users =
     `spreatics//1234//스프레틱스
@@ -33,3 +33,5 @@ exports.loginPost2 = (req, res) => {
     if (login_flag) res.send(`${name} 님 환영합니다.`);
     else res.send(`로그인 실패`);
 }
+
+
