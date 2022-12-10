@@ -36,11 +36,11 @@
                     }
                 });
             }
+
             function profileDelete() {
                 var form = document.getElementById("form_profile");
                 if ( !form.checkValidity() ) {
                     form.reportValidity();
-
                     return false;
                 }
                 let user = {
@@ -63,6 +63,7 @@
         </script>
     </head>
     <body>
+        <!-- 이미지 <img src="<%=data.img%>" alt=""> !-->
         <div class="scene flex">
             <section class="card">
             <h1 class="card__heading">

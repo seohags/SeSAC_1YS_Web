@@ -26,9 +26,12 @@
                 axios({
                     method: 'post',
                     url: '/user/signin',
-                    data: user
-                }).then((rep) => {return rep.data;} )
-                .then((data) => {
+                    data: {
+                        id:form.id.value,
+                        pw:form.pw.value
+                    }
+                    }).then((rep) => {return rep.data;} )
+                    .then((data) => {
                     if ( data == true ){
                         alert("로그인 성공");
                         var form_info = document.getElementById("form_info");
@@ -40,10 +43,9 @@
                     }
                 });
             }
-
         </script>
     </head>
-    
+
     <body>
         <div class="scene flex">
             <section class="card">
@@ -54,9 +56,9 @@
                 <input type="hidden" name="id">
             </form>
             <form class="card__form" id="form_login">
-                <label for="ID" class="visually">아이디 :</label>
+                <label for="ID" class="visually">아이디 : </label>
                 <div><input id="ID" class="card__input" type="text" name="id" required /></div>
-                <label for="password" class="visually">비밀번호 :</label>
+                <label for="password" class="visually">비밀번호 : </label>
                 <input id="password" class="card__input" type="password" name="pw" required />
                 <button class="card__button" type="button" onclick="login();">
                 <span>로그인</span>

@@ -18,12 +18,12 @@
                     console.log( "reportValidity" );
                     return true;
                 }
-
                 let user = {
                     id: form.id.value,
                     pw: form.pw.value,
                     name: form.name.value
                 };
+
                 axios({
                     method: 'post',
                     url: '/user/signup',
@@ -44,11 +44,11 @@
                 <span> 회원가입 </span>
             </h1>
             <form class="card__form" id="form_register">
-                <label for="ID" class="visually">아이디 :</label>
+                <label for="ID" class="visually">아이디 :  </label>
                 <div><input id="ID" class="card__input" type="text" name="id" required /></div>
-                <label for="password" class="visually">비밀번호 :</label>
+                <label for="password" class="visually">비밀번호 : </label>
                 <input id="password" class="card__input" type="password" name="pw" required />
-                <label for="nickname" class="visually">이름 : </label>
+                <label for="nickname" class="visually">닉네임 : </label>
                 <input id="nickname" class="card__input" type="text" name="name" required />
                 <button class="card__button" type="button" onclick="register();">
                 <span>회원가입</span>
