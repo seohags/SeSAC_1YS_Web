@@ -50,3 +50,4 @@ app.get("/get", (req, res) => { // req로 가져오고
 app.listen(port, () => {
     console.log("server open", port);
 });
+

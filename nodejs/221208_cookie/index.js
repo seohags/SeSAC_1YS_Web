@@ -4,6 +4,7 @@ const app = express();
 
 app.set("view engine", "ejs");
 app.use("/static", express.static("/static"));
+
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
 
@@ -20,37 +21,67 @@ app.use(session({
     // secure: // true 보안서버에서만 작동
 }))
 
-app.get("/", (req, res) => {
-    res.render('login');
-});
+// app.get("/", (req, res) => {
+//     res.render('login');
+// });
 
-app.get("/", (req, res) => {
-    if (req.session.user) res.render("login", { isLogin: true })
-    else res.render("login", { isLogin: false })
-    res.send("session");
-});
+// app.get("/", (req, res) => {
+//     if (req.session.user) res.render("login", { isLogin: true })
+//     else res.render("login", { isLogin: false })
+//     res.send("session");
+// });
+
+
+
+// app.post("/login", (req, res) => {
+//     // cookies = { } 
+//     // req.session = {}
+//     if (req.body.id === user.id && req.body.pw == user.pw) {
+//         req.session.user = req.body.id;
+//         res.send("login");
+//     } else {
+//         res.send("login fail");
+//     }
+//     req.session.user = "id";
+//     res.send("session create complete");
+// });
+
+// app.delete("/logout", (req, res) => {
+//     req.session.destroy(function (err) {
+//         if (err) throw err;
+//         res.send("Logout");
+//     })
+// });
 
 const user = { id: "a", pw: "1" };
 
-app.post("/login", (req, res) => {
-    // cookies = { } 
-    // req.session = {}
-    if (req.body.id === user.id && req.body.pw == user.pw) {
-        req.session.user = req.body.id;
-        res.send("login");
-    } else {
-        res.send("login fail");
-    }
-    req.session.user = "id";
-    res.send("session create complete");
+app.get("/", (req, res) => {
+    console.log(req.session.user);
+    if (req.session.user) res.render('index', { isLogin: true, id: req.session.user });
+    else res.render('index', { isLogin: false });
 });
 
-app.delete("/logout", (req, res) => {
-    req.session.destroy(function (err) {
-        if (err) throw err;
-        res.send("Logout");
-    })
+app.get("/login", (req, res) => {
+    res.render('login');
 });
+
+app.post("/login", (req, res) => {
+    console.log(req.body, user);
+    if (req.body.id == user.id && req.body.pw == user.pw) {
+        req.session.user = req.body.id;
+        res.send(true);
+    } else {
+        res.send(false);
+    }
+});
+
+app.get("/logout", (req, res) => {
+    req.session.destroy(function (err) {
+        if (err) throw (err);
+        res.redirect("/");
+    });
+
+})
 
 app.listen(port, () => {
     console.log("server open", port);
