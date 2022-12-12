@@ -25,3 +25,22 @@ exports.post_signin = (req, res) => {
         else res.send(false);
     });
 }
+
+// exports.profile = (req, res) => {
+//     User.get_user(req.body.id, function (result) {
+//         if (result.length > 0) res.render("mypage", { data: result[0] });
+//         else res.redirect("/user/mypage");
+//     })
+// }
+
+// exports.profile_edit = (req, res) => {
+//     User.update_profile(req.body, function () {
+//         res.send(true);
+//     })
+// }
+
+// exports.profile_delete = (req, res) => {
+//     User.delete_user(req.body.id, function () {
+//         res.send(true);
+//     })
+// }

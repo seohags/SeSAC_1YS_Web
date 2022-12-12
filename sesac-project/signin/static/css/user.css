@@ -61,7 +61,7 @@ body {
 .card__button {
   background: #DBC000;
   border: none;
-  border-radius: 3px;
+  border-radius: 20px;
   color: black;
   margin: 15px auto 0 auto;
   padding: 8px 20px;
@@ -79,10 +79,15 @@ body {
 }
 
 button {
-  background: white;
+  background: #DBC000;
   border: none;
-  border-radius: 5px;
-  color: black;
-  margin: 15px auto 0 auto;
+  border-radius: 30px;
+  color: white;
+  margin: 10px auto 0 auto;
   padding: 8px 20px;
+}
+
+.fish {
+  width: 50px;
+  margin: -10px;
 }
