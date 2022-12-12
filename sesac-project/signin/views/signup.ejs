@@ -10,13 +10,14 @@
         <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10"></script>
         <link rel="stylesheet" href="/static/css/user.css">
         <script>
+
             function register() {
                 let form = document.getElementById("form_register");
                 if ( !form.checkValidity() ) {
                     form.reportValidity();
                     console.log( "reportValidity" );
                     return true;
-                }
+                } 
 
                 let user = {
                     id: form.id.value,
@@ -24,19 +25,26 @@
                     name: form.name.value,
                     nickName: form.nickName.value
                 };
-                
+
                 axios({
                     method: 'post',
                     url: '/user/signup',
                     data: user
-                }).then((rep) => {return rep.data;} )
+                })
                 .then((data) => {
-                    alert("회원가입 성공");
-                    document.location.href="/user/signin";
+                    console.log(data.data);
+                    if(data.data === "회원가입 성공") {
+                        document.location.href="/user/signin";
+                        alert("회원가입 성공");
+                    } else {
+                        document.querySelector("p").innerText="실패";
+                    }
+                    //alert("회원가입 성공");
+                    //document.location.href="/user/signin";
+                }).catch((err) => {
+                    document.querySelector("p").innerText="실패";
                 });
-            }
-
-
+            }            
             
         </script>
     </head>
@@ -58,11 +66,11 @@
                 <input id="password" class="card__input" type="password" name="pw" required />
                 <label for="nickName" class="visually">닉네임 : </label>
                 <input id="nickName" class="card__input" type="text" name="nickName" required />
-                <button class="card__button" type="button" onclick="register();">
-                <span>회원가입</span>
+                 <button class="card__button" type="button" onclick="register();">
+                    <span>회원가입</span>
                 </button>
+                <p></p>
             </form>
-            <a href="/user/signin">로그인</a>
             </section>
         </div>
     </body>

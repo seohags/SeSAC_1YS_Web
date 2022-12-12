@@ -15,7 +15,7 @@ exports.signup = (req, res) => {
 
 exports.post_signup = (req, res) => {
     User.post_signup(req.body, () => {
-        res.send(true);
+        res.send("회원가입 성공");
     });
 }
 
